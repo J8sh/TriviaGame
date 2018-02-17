@@ -44,10 +44,10 @@ var unansweredTally = 0;
 
 
 $(document).ready(function() {
-// Create a function that creates the start button and initial screen
+// A function that creates the start button and initial screen
 
 function initialScreen() {
-	startScreen = "<p class='text-center main-button-container'><a class='btn btn-primary btn-lg btn-block start-button' href='#' role='button'>Start Quiz</a></p>";
+	startScreen = "<p><a class='btn-primary' href='#' role='button'><strong>Start Exam</strong></a></p>";
 	$(".mainArea").html(startScreen);
 }
 
@@ -55,7 +55,7 @@ initialScreen();
 
 //Create a function, generateHTML(), that is triggered by the start button, and generates the HTML seen on the project video...
 
-$("body").on("click", ".start-button", function(event){
+$("body").on("click", ".btn-primary", function(event){
 	event.preventDefault(); 
 	generateHTML();
 
@@ -87,27 +87,57 @@ $("body").on("click", ".reset-button", function(event){
 
 function generateLossDueToTimeOut() {
 	unansweredTally++;
-	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswers[questionCounter] + "</p>";
+	gameHTML = 
+		"<p class='timer-p'>Time Remaining: <span class='timer'>" 
+		+ counter + 
+		"</span></p>" + 
+		"<p class='rightOrWrong'>You ran out of time!  The correct answer was: " 
+		+ correctAnswers[questionCounter] + 
+		"</p>";
 	$(".mainArea").html(gameHTML);
 	setTimeout(wait, 4000);  
 }
 
 function generateWin() {
 	correctTally++;
-	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Correct! The answer is: " + correctAnswers[questionCounter] + "</p>";
+	gameHTML = 
+		"<p class='timer-p'>Time Remaining: <span class='timer'>" 
+		+ counter + 
+		"</span></p>" + 
+		"<p class='rightOrWrong'>Correct! The answer is: " 
+		+ correctAnswers[questionCounter] + 
+		"</p>";
 	$(".mainArea").html(gameHTML);
 	setTimeout(wait, 4000);  
 }
 
 function generateLoss() {
 	incorrectTally++;
-	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Wrong! The correct answer is: "+ correctAnswers[questionCounter] + "</p>";
+	gameHTML = 
+		"<p class='timer-p'>Time Remaining: <span class='timer'>" 
+		+ counter + 
+		"</span></p>" + 
+		"<p class='rightOrWrong'>Wrong! The correct answer is: " 
+		+ correctAnswers[questionCounter] + 
+		"</p>";
 	$(".mainArea").html(gameHTML);
 	setTimeout(wait, 4000); 
 }
 
 function generateHTML() {
-	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>30</span></p><p class='text-center'>" + questionArray[questionCounter] + "</p><p class='first-answer answer'>A. " + answerArray[questionCounter][0] + "</p><p class='answer'>B. "+answerArray[questionCounter][1]+"</p><p class='answer'>C. "+answerArray[questionCounter][2]+"</p><p class='answer'>D. "+answerArray[questionCounter][3]+"</p>";
+	gameHTML = 
+	"<p class='text-center timer-p'>Time Remaining: <span class='timer'>30</span></p><p class='text-center'>" 
+	+ questionArray[questionCounter] + 
+	"</p><p class='first-answer answer'>A. " 
+	+ answerArray[questionCounter][0] + 
+	"</p><p class='answer'>B. " 
+	+ answerArray[questionCounter][1] + 
+	"</p><p class='answer'>C. " 
+	+ answerArray[questionCounter][2] + 
+	"</p><p class='answer'>D. " 
+	+ answerArray[questionCounter][3] + 
+	
+	"</p>";
 	$(".mainArea").html(gameHTML);
 }
 
@@ -138,7 +168,22 @@ function timerWrapper() {
 }
 
 function finalScreen() {
-	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + correctTally + "</p>" + "<p>Wrong Answers: " + incorrectTally + "</p>" + "<p>Unanswered: " + unansweredTally + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Quiz!</a></p>";
+	gameHTML = 
+	"<p class='timer-p'>Time Remaining: <span class='timer'>" 
+	+ counter + 
+	"</span></p>" + 
+	"<p class='rightOrWrong'>All done, here's how you did!" + 
+	"</p>" + 
+	"<p class='summary-correct'>Correct Answers: " 
+	+ correctTally + 
+	"</p>" + 
+	"<p>Wrong Answers: " 
+	+ incorrectTally + 
+	"</p>" + 
+	"<p>Unanswered: " 
+	+ unansweredTally + 
+	"</p>" + 
+	"<p class='reset-button-container'><a class='reset-button' href='#' role='button'><strong>Retake the O.W.L</strong></a></p>";
 	$(".mainArea").html(gameHTML);
 }
 
