@@ -3,10 +3,12 @@
 /****** GENERAL ******/
 
 body {
-  background: url(../images/hogswartPaper.jpg);
+  background: url(../images/hogswartPaper.jpg) no-repeat center;
   font-family: 'Tangerine', cursive;
   /*font-family: 'Rochester', cursive;*/
-  /*font-family: 'Caveat', cursive;*/  
+  /*font-family: 'Caveat', cursive;*/ 
+  background-color: burlywood;
+
 }
 
 /****** TITLE ******/
@@ -39,6 +41,14 @@ body {
 footer {
   text-align: center;
   color: black;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-top: 25%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
 }
 
 .icon {
